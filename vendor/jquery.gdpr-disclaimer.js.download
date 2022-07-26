@@ -1,0 +1,130 @@
+/**
+ * jquery.gdpr-disclaimer.js
+ * 
+ * Basic jQuery plugin
+ * 
+ * Plugin augments the disclaimer so that secondary texts 
+ * can be toggled via info- and close-buttons.
+ * 
+ * Additionally, already consents provided via options get checked.
+ * 
+ * Usage:
+ * 
+ * (1) Include javascript and css files
+ * 
+ *     <script type="text/javascript" src="jquery.gdpr-disclaimer.min.js"></script>
+ *     <link type="text/css" rel="stylesheet" href="jquery.gdpr-disclaimer.css">
+ *     
+ * (2) Create a wrapper element and embed the disclaimer 
+ *     fetched from BMW CSEE CRM API:
+ * 
+ *     <div id="disclaimer">{{ gdprDisclaimer }}</div>
+ *     
+ * (3) Call the plugin:
+ * 
+ *     <script type="text/javascript">
+ *         $(document).ready(function() {
+ *		       $('#disclaimer').gdprDisclaimer();
+ *         });
+ *     </script>
+ *     
+ * (4) Optionally provide previously received consents to the plugin
+ *     so they can be checked
+ *     
+ *     <script type="text/javascript">
+ *         $(document).ready(function() {
+ *		       $('#disclaimer').gdprDisclaimer({
+ *		           consents: {{ values.GCDM_Policy_Consent|json_encode|raw }}
+ *		       });
+ *         });
+ *     </script>
+ *     
+ * (5) Enjoy.
+ * 
+ * 
+ * @author jjarolim, adwerba
+ */
+
+(function($) {
+
+	$.fn.gdprDisclaimer = function(options) {
+		
+		var defaults = {
+			consents: [],
+			icons: {
+				info: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-.001 5.75c.69 0 1.251.56 1.251 1.25s-.561 1.25-1.251 1.25-1.249-.56-1.249-1.25.559-1.25 1.249-1.25zm2.001 12.25h-4v-1c.484-.179 1-.201 1-.735v-4.467c0-.534-.516-.618-1-.797v-1h3v6.265c0 .535.517.558 1 .735v.999z"/></svg>',
+				close: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"/></svg>'
+			}
+		};
+		
+		var settings = $.extend({}, defaults, options);
+		
+		return this.each(function() {
+
+			// Hide Child Elements
+
+			$('[data-parent-id]', this).hide();
+			
+			// Augment Parent Elements:
+			// Add Info Button
+
+			$('[data-child-id]', this).each(function() {
+
+				var $this = $(this);
+				var parentId = $this.attr('id');
+				var childId = $this.attr('data-child-id');
+
+				$this.append(
+					'<a class="gcdm-cta gcdm-cta-show" href="javascript:void(0);" onclick="$.fn.gdprDisclaimer.show(\'' + parentId + '\', \'' + childId + '\');">' + settings.icons.info + '</a>'
+				);
+
+			});			
+			
+			// Augment Child Elements:
+			// Add Close Button
+
+			$('[data-parent-id]', this).each(function() {
+
+				var $this = $(this);
+				var parentId = $this.attr('data-parent-id');
+				var childId = $this.attr('id');
+
+				$this.append(	
+					'<a class="gcdm-cta gcdm-cta-hide" href="javascript:void(0);" onclick="$.fn.gdprDisclaimer.hide(\'' + parentId + '\', \'' + childId + '\');">' + settings.icons.close + '</a>'
+				);
+		
+				
+
+			});
+			
+			// Optionally pre-initialize checkboxes that were 
+			// optionally set via options
+
+			if (settings.consents !== null && Array.isArray(settings.consents) && settings.consents.length > 0) {
+				for ( i in settings.consents) {
+					var selector = '#gcdm-policy-consent-' + settings.consents[i].replace(/\./g, '-');
+					$(selector).prop('checked', true);
+				}
+			}
+			
+			// Augment Checkbox HTML so it can be styledaccording to
+			// @see https://kyusuf.com/post/completely-css-custom-checkbox-radio-buttons-and-select-boxes
+
+			$('label')
+			.addClass('control control--checkbox')
+			.append('<div class="control__indicator"></div>');
+			
+		});
+	};
+	
+	$.fn.gdprDisclaimer.show = function(parentId, childId) {
+		$('#' + childId).slideDown(500);
+		$('#' + parentId + ' .gcdm-cta').fadeOut(250);
+	};
+	
+	$.fn.gdprDisclaimer.hide = function(parentId, childId) {
+		$('#' + childId).slideUp(250);
+		$('#' + parentId + ' .gcdm-cta').fadeIn(250);
+	};
+
+})(jQuery);

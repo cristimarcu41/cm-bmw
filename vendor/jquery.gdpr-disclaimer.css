@@ -1,0 +1,49 @@
+/**
+ * gdpr-disclaimer
+ *
+ * @author jjarolim, adwerba
+ */
+.gcdm-policy .gcdm-text-block {
+  margin-bottom: 15px; }
+  .gcdm-policy .gcdm-text-block .gcdm-usage-text {
+    margin-bottom: 5px; }
+  .gcdm-policy .gcdm-text-block .gcdm-usage-text-headline {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+  .gcdm-policy .gcdm-text-block .gcdm-usage-text-below .gcdm-usage-text-parent {
+    font-weight: bold; }
+  .gcdm-policy .gcdm-text-block .gcdm-checkbox {
+    cursor: pointer; }
+  .gcdm-policy .gcdm-text-block .gcdm-usage-definitions {
+    padding-left: 15px; }
+    .gcdm-policy .gcdm-text-block .gcdm-usage-definitions .gcdm-usage-definition {
+      margin-bottom: 5px; }
+.gcdm-policy *[data-parent-id] {
+  padding: 5px 0 5px 0;
+  font-size: 0.9em;
+  color: #999; }
+.gcdm-policy .gcdm-cta {
+  display: inline-block;
+  vertical-align: middle; }
+  .gcdm-policy .gcdm-cta svg {
+    width: 20px;
+    transition: fill 0.5s ease-in; }
+  .gcdm-policy .gcdm-cta:hover svg {
+    fill: #337ab7;
+    transition: fill 0.15s ease-in; }
+.gcdm-policy .gcdm-cta-hide {
+  display: block;
+  padding-top: 5px;
+  margin-bottom: 15px; }
+  .gcdm-policy .gcdm-cta-hide:hover svg {
+    fill: #ce4844; }
+.gcdm-policy label {
+  display: inline;
+  font-weight: normal;
+  cursor: pointer; }
+  .gcdm-policy label > p {
+    display: inline; }
+
+/*# sourceMappingURL=jquery.gdpr-disclaimer.css.map */

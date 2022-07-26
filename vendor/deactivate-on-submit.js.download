@@ -1,0 +1,27 @@
+/**
+ * deactivate-on-submit
+ * 
+ * Form onSubmit deaktivieren und Loading Indicator darstellen, 
+ * bis Seite neu geladen wurde
+ * 
+ * @author jjarolim, adwerba
+ */
+
+(function($) {
+	
+	
+	$(document).ready(function() {
+		
+		$('.loading-indicator').fadeOut(500);
+		
+		$('form').on('submit', function(e) {
+			
+			$('.loading-indicator')
+			.css('height', $(document).height())
+			.fadeIn(500);
+	
+		});
+	});
+	
+})(jQuery);
+

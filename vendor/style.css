@@ -1,0 +1,157 @@
+
+
+  @font-face {
+    font-family: bmwTypeLight;
+    src: url("/fonts/BMWTypeWebLightAllLatinExtended.woff2");
+  }
+
+*{
+  font-family: bmwTypeLight,Arial,Helvetica,Roboto,sans-serif;
+}
+
+#submitButton{
+  width:100%;
+}
+label{
+  font-weight: 400;
+}
+
+.gcdm-policy .gcdm-text-block {
+  margin-bottom: 15px; }
+  .gcdm-policy .gcdm-text-block .gcdm-usage-text {
+    margin-bottom: 5px; }
+  .gcdm-policy .gcdm-text-block .gcdm-usage-text-headline {
+    font-weight: bold;
+    margin-bottom: 10px; }
+  .gcdm-policy .gcdm-text-block .gcdm-usage-text-below .gcdm-usage-text-parent {
+    font-weight: bold; }
+  .gcdm-policy .gcdm-text-block .gcdm-checkbox {
+    cursor: pointer; }
+  .gcdm-policy .gcdm-text-block .gcdm-usage-definitions {
+    padding-left: 15px; }
+    .gcdm-policy .gcdm-text-block .gcdm-usage-definitions .gcdm-usage-definition {
+      margin-bottom: 5px; }
+.gcdm-policy *[data-parent-id] {
+  padding: 5px 0 5px 0;
+  font-size: 0.9em;
+  color: #999; }
+.gcdm-policy .gcdm-cta {
+  display: inline-block;
+  vertical-align: middle; }
+  .gcdm-policy .gcdm-cta svg {
+    width: 20px;
+    transition: fill 0.5s ease-in; }
+  .gcdm-policy .gcdm-cta:hover svg {
+    fill: #337ab7;
+    transition: fill 0.15s ease-in; }
+.gcdm-policy .gcdm-cta-hide {
+  display: block;
+  padding-top: 5px;
+  margin-bottom: 15px; }
+  .gcdm-policy .gcdm-cta-hide:hover svg {
+    fill: #ce4844; }
+.gcdm-policy label {
+  display: inline;
+  font-weight: normal;
+  cursor: pointer; }
+  .gcdm-policy label > p {
+    display: inline; }
+
+/**
+ * _bootstrap-datepicker
+ *
+ * @author jjarolim, adwerba
+ */
+.bmw-csee-crm-api .datepicker table tr td span.disabled,
+.bmw-csee-crm-api .datepicker table tr td span.disabled:hover {
+  color: #ddd; }
+.bmw-csee-crm-api .datepicker table tr td.disabled,
+.bmw-csee-crm-api .datepicker table tr td.disabled:hover {
+  color: #ddd; }
+
+section.input-fields {
+  padding: 15px 0;
+  margin: 0;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef; }
+  section.input-fields label {
+    display: block;
+    margin-bottom: 0; }
+
+
+.form-group ul.violations {
+  display: none; }
+
+.form-group-violation label {
+  color: #ce4844; }
+
+.disclaimer-age {
+  margin-bottom: 15px; }
+
+section.content {
+  padding-bottom: 30px; }
+
+/* Thanks Page */
+body.thanks {
+  /* PDF Download No Image Fallback */ }
+  body.thanks a.download-pdf {
+    margin-top: 30px;
+    border-radius: 0; }
+
+/* Loading Indicator */
+.loading-indicator {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  /* Spinner Circle Rotation */ }
+  .loading-indicator.active {
+    display: block; }
+  .loading-indicator .sp {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    width: 100px;
+    height: 100px;
+    clear: both; }
+  .loading-indicator .sp-circle {
+    border: 10px rgba(0, 0, 0, 0.1) solid;
+    border-top: 10px #316ad7 solid;
+    border-radius: 50%;
+    -webkit-animation: spCircRot .6s infinite linear;
+    animation: spCircRot 2s infinite linear; }
+@-webkit-keyframes spCircRot {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(359deg); } }
+@keyframes spCircRot {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
+
+/*# sourceMappingURL=style.css.map */
+.preloader-wrapper {
+  height: 100%;
+  width: 100%;
+  background: #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+}
+
+.preloader-wrapper .preloader {
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 120px;
+}
